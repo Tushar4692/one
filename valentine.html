@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Be My Valentine 💖</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', sans-serif;
+        background: radial-gradient(circle, #ff758c, #ff7eb3);
+    }
+
+    .card {
+        background: rgb(216, 148, 196);
+        padding: 45px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+        z-index: 2;
+    }
+
+    h1 {
+        color: #e60073;
+        margin-bottom: 30px;
+    }
+
+    button {
+        padding: 14px 34px;
+        font-size: 18px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        margin: 10px;
+        transition: transform 0.2s;
+    }
+
+    #yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #yes:hover {
+        transform: scale(1.1);
+    }
+
+    #no {
+        background: #ddd;
+        position: absolute;
+    }
+
+    /* Hearts */
+    .heart {
+        position: absolute;
+        bottom: -20px;
+        font-size: 20px;
+        animation: float 6s linear infinite;
+        color: rgba(255,255,255,0.8);
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); opacity: 1; }
+        100% { transform: translateY(-110vh); opacity: 0; }
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h1>Will you be my Valentine Cuttieeee? 💘💕😍</h1>
+    <button id="yes" onclick="yesClick()">Yes 💖</button>
+    <button id="no">No 🙈</button>
+</div>
+
+<script>
+    const noBtn = document.getElementById("no");
+
+    noBtn.addEventListener("mouseover", moveNo);
+    noBtn.addEventListener("click", moveNo);
+
+    function moveNo() {
+        const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+        const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+    }
+
+    function yesClick() {
+        document.body.innerHTML = `
+            <h1 style="color:white; font-size:50px; text-align:center;">
+           Bubu 💋💋💋🫂💖😍<br>
+                Happy Valentine’s Day! My LifeLine Bubu💋💋💋🫂🫂🫂🫂🫂🫂❤️
+            </h1>`;
+    }
+
+    // Floating hearts
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+    }, 300);
+</script>
+
+</body>
+</html>
